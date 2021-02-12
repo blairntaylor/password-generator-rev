@@ -69,6 +69,11 @@ function generatePassword() {
     console.log(choiceCharacters);
   }
 
+  // //if user selects no characters
+  else {
+    prompt("You must make a selection.");
+  }
+
   for (i = 0; i < passLength; i++) {
     // console.log(i);
     //random slection from the entire user choice array
