@@ -12,21 +12,14 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
+  console.log(password);
 }
 
-// Add event listener to generate button to call start
-generateBtn.addEventListener("click", function () {
-  generatePassword();
-});
+// Add event listener so on click start writePassword function
+generateBtn.addEventListener("click", writePassword);
 
 //length of password is empty
 var passLength = " ";
-
-// user selection variables
-// choiceChars = true;
-// choiceUpLetters = true;
-// choiceDownLetters = true;
-// choiceNums = true;
 
 var passwordText = " "; // pass variables into into a string
 
@@ -55,6 +48,7 @@ function generatePassword() {
   var choiceNums = window.confirm("Do you want numbers?");
   console.log(choiceNums);
 
+  //if choicePSecial user answer is true then add choice to choiceCharaters array
   if (choiceSpecial) {
     choiceCharacters = choiceCharacters.concat(specCharacters);
     console.log(choiceCharacters);
@@ -76,36 +70,18 @@ function generatePassword() {
   }
 
   for (i = 0; i < passLength; i++) {
-    console.log(i);
+    // console.log(i);
+    //random slection from the entire user choice array
+    var randomAnswer =
+      choiceCharacters[Math.floor(Math.random() * choiceCharacters.length)];
+    // console.log(randomAnswer);
+
+    passwordText = randomAnswer.concat(passwordText);
+
     // math random here to pull from array of choiceCharacters array
     //after you pick the characte you concat the var passwordText string
   }
+  console.log(passwordText);
 
-  //   } else if (
-  //     window.confirm("Do you want to include special characters?") == true
-  //   );
-  //   {
-  //     choiceChars == true;
-  //   }
-  //   if (window.confirm("Do you want to include uppercase letters?") == true);
-  //   {
-  //     choiceUpLetters == true;
-  //   }
-  //   if (window.confirm("Do you want to include lowercase letters?") == true);
-  //   {
-  //     choiceDownLetters == true;
-  //   }
-  //   if (window.confirm("Do you want to include numbers?") == true);
-  //   {
-  //     choiceNums == true;
-  //   }
-  //   is(
-  //     choiceChars == false &&
-  //       choiceUpLetters == false &&
-  //       choiceDownLetters == false &&
-  //       choiceNums == false
-  //   );
-  //   {
-  //     alert("You have not selected any characters.");
-  //   }
+  return passwordText;
 }
